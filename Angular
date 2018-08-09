@@ -1,0 +1,187 @@
+07/08/2018
+========
+angular js 1.x
+JS: ES5
+
+JS: ES6 -->egma
+
+-----
+
+ts-->js for browser
+
+===========
+componet
+custom directives
+built-in directives
+component comm
+services & dependency injc
+built-in pipes
+custom pipes
+routing nd navigation
+observable ( promises 1.x)
+http with rest api
+angular forms
+angular form validtions
+
+animations
+testing (tools-karma..)
+
+
+
+pre-requisit
+===
+1. node.js
+	>node -v
+	>npm -v
+
+2.Atom (free)
+  visual studio code
+
+3.Angular CLI
+	> npm i -g @angular/cli@latest
+
+4.create angular prjct
+	> ng new <<prjct name >>
+
+	ex: ng new my-ngprjct-app
+
+**instead of npm there is other like yarn
+
+5. run our app
+	> ng serve -o (compile and open)
+		
+		-server start
+		-server will deploy our app
+		-compile our app
+		- open app
+	>ng serve 
+		-server start
+		-server will deploy our app
+		-compile our app
+
+
+6. change default port
+
+	>ng serve --port 9090 
+	> ng serve --port 9090 -o
+
+prjct folders/structure
+=======
+
+e2e - end2end -to write test cases using protactor tool
+
+node_modules -required modules to run app - npm dwnlds all modules
+
+src - app src code
+
+	index.html -- root/ welcome file
+	karma
+
+package.json --required dependencies
+
+
+*angular uses webpack development server
+
+webpack:
+---------
+
+-webpack is  a js bundler
+- .ts->.js
+-live watching (nly webpack bundler has this auto refresh option)
+
+-SystemJS, Browserify,RequiredJS (bundlers)
+
+
+
+browser moving structure:
+------------------------
+index.html->module.ts->main.ts-->app.component.ts->template
+
+
+Component(ng 2):
+---------
+Angular js 1.x -controller
+
+-ts class
+-ng application is a tree of components
+-contains a decorator called @Component
+	@Component-provides a meta data of a component like template,css class
+
+	> ng generate component MyComponent
+
+	-angular creates a folder and generates 4 files
+		1. .ts
+		2. .spec
+		3. .css (multiple css files can be added)
+		4. .html
+
+* manual creation on component folder then mention the component name in module.ts - declarations[]
+
+
+* we can create a component with inline template:
+	> ng g c my-comp --inline-template
+
+
+
+========================
+
+Array Itteration: *ngFor
+<ul>
+	<li *ngFor="let p of products">{{p}}</li>
+</ul>
+
+
+* every property mentioned in interface must overide inorder to create a class of it.
+
+create interface:
+----------------
+	> ng g interface product
+
+======================================
+
+* to make communication b/w two components
+
+child->parent
+
+import Input from "@angular/core"
+
+@Input() varName;
+
+--the component
+
+
+ex:productcomponentlist
+
+   productcomponent
+
+
+productcomponent:
+	productcomponent{
+	
+		@Input() productInfo;
+
+	
+	}
+
+productcomponentlist:
+
+productcomponentlist{
+	productInfo:Product;
+	eachPro(p){
+		this.productInfo=p;
+	}
+	}
+
+html:
+	
+<ul>
+	<li *ngFor="let p of products">
+		<a (click)="eachPro(p)"> {{p.name}} </a>
+	</li>
+</ul>
+
+
+<app-product [productInfo]="proObj"> </app-product>
+
+
+
